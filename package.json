@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start-frontend": "cd Frontend && npm run dev",
+    "start-backend": "cd Backend && npm start",
+    "start": "concurrently -n \"FRONTEND,BACKEND\" -c \"bgBlue,bgYellow\" -p \"[{name}]\" \"npm run start-frontend\" \"npm run start-backend\"",
+    "install-frontend": "cd Frontend && npm i && npm run build",
+    "install-backend": "cd Backend && npm i",
+    "installer": "npm i && npm run install-backend && npm run install-frontend",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5"
+  }
+}
