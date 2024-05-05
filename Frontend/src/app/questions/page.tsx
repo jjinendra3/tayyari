@@ -122,23 +122,39 @@ export default function Home() {
             </div>
           </RadioGroup>
           <div className="md:flex md:flex-row md:justify-between md:mt-auto text-gray-500 mt-4">
-            <Button
-              variant="outline"
-              className="flex space-x-2 items-center "
-              disabled={questionid === 0 || submit}
-              onClick={() => {
-                setValue(undefined);
-                setquestionid(questionid - 1);
-              }}
-            >
-              <FaArrowLeft />
-              <div className="font-bold hidden md:block">Previous</div>
-            </Button>
-            <div className="space-x-4">
+            <div className="flex flex-row justify-between mb-2">
+              <Button
+                variant="outline"
+                className="flex space-x-2 items-center "
+                disabled={questionid === 0 || submit}
+                onClick={() => {
+                  setValue(undefined);
+                  setquestionid(questionid - 1);
+                }}
+              >
+                <FaArrowLeft />
+                <div className="font-bold hidden md:block">Previous</div>
+              </Button>
+              <Button
+                variant="outline"
+                className="flex space-x-2 items-center md:hidden "
+                disabled={questionid === context.questions.length - 1 || submit}
+                onClick={() => {
+                  setquestionid(questionid + 1);
+                  setValue(undefined);
+                }}
+              >
+                <FaArrowRight />
+              </Button>
+            </div>
+            <div className="space-x-4 flex justify-center">
               <Button
                 variant="outline"
                 className="font-bold py-2"
                 disabled={submit}
+                onClick={() => {
+                  setsubmit(true);
+                }}
               >
                 Check Solution
               </Button>
@@ -161,14 +177,14 @@ export default function Home() {
             </div>
             <Button
               variant="outline"
-              className="flex space-x-2 items-center"
+              className=" space-x-2 items-center hidden md:flex"
               disabled={questionid === context.questions.length - 1 || submit}
               onClick={() => {
                 setquestionid(questionid + 1);
                 setValue(undefined);
               }}
             >
-              <div className="font-bold hidden md:block">Skip</div>
+              <div className="font-bold block ">Skip</div>
               <FaArrowRight />
             </Button>
           </div>
