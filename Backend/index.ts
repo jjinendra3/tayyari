@@ -27,8 +27,8 @@ app.post("/addQuestion", async (req, res) => {
         opt3: req.body.opt3,
         opt4: req.body.opt4,
         ques_image: req.body.ques_image,
-        ans_image: req.body.ans_image,
-        solution: req.body.solution,
+        ans_image: req.body.ans_image,//give i.ibb image link or keep it null
+        solution: req.body.solution,//give i.ibb image link or keep it null
       },
     });
     return res.send({ success: 1, question });
@@ -56,7 +56,6 @@ app.post("/submit", async (req, res) => {
       return res.send({ success: 0, error: "Question not found" });
     }
     const correct: boolean = question[0].ans === req.body.answer;
-    console.log(question[0].ans, req.body.answer, correct);
     const submission = await prisma.submission.create({
       data: {
         quesId: req.body.question_id,

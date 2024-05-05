@@ -62,7 +62,6 @@ const Tayyari: React.FC<TayyariProps> = ({ children }) => {
 
   const submit = async (question_id: number, answer: string) => {
     try {
-      console.log(question_id, answer);
       const res = await axios.post(`${BACKEND}/submit`, {
         question_id,
         answer,
@@ -82,7 +81,7 @@ const Tayyari: React.FC<TayyariProps> = ({ children }) => {
   };
   const fetchquestions = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/questions`);
+      const res = await axios.get(`${BACKEND}/questions`);
       if (res.data.success === 1) {
         setquestions(res.data.ques);
       } else {

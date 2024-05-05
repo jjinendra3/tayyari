@@ -7,8 +7,7 @@ const Home: React.FC = () => {
   const [serverStatus, setServerStatus] = useState<string>("Server is asleep");
   const context = useContext(Context);
   const wakeServer = async () => {
-    console.log("Yes");
-    setServerStatus("Server wasing Up");
+    setServerStatus("Server waking Up");
     await context.wakeserver();
   };
   return (
