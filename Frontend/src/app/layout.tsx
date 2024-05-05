@@ -18,10 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Tayyari>
-      <body className={inter.className}>
-        <ToastProvider>
-        {children}
-        </ToastProvider>
+        <body className={inter.className}>
+          <ToastProvider>{children}</ToastProvider>
         </body>
       </Tayyari>
     </html>

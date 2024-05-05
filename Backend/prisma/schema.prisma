@@ -21,7 +21,7 @@ model Question {
   opt3 String
   opt4 String
   ans String 
-  solution String @default("No Solution Provided")
+  solution String @default("No Text Solution Explanation Provided")
   ques_image String?
   ans_image String?
 }

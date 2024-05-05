@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-app.get("/reset", async(req, res) => {
+app.get("/reset", async (req, res) => {
   try {
     await prisma.submission.deleteMany();
     await prisma.question.deleteMany();
@@ -28,6 +28,7 @@ app.post("/addQuestion", async (req, res) => {
         opt4: req.body.opt4,
         ques_image: req.body.ques_image,
         ans_image: req.body.ans_image,
+        solution: req.body.solution,
       },
     });
     return res.send({ success: 1, question });
@@ -55,13 +56,14 @@ app.post("/submit", async (req, res) => {
       return res.send({ success: 0, error: "Question not found" });
     }
     const correct: boolean = question[0].ans === req.body.answer;
+    console.log(question[0].ans, req.body.answer, correct);
     const submission = await prisma.submission.create({
       data: {
         quesId: req.body.question_id,
         correct: correct,
       },
     });
-    return res.send({ success: 1, submission,answer:question[0].ans });
+    return res.send({ success: 1, submission, answer: question[0].ans });
   } catch (error: any) {
     return res.send({ success: 0, error: error });
   }
