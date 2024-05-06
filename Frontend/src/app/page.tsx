@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       <div className="bg-white p-4">
         <div className="flex justify-between font-bold text-2xl">
           <h1>Tayyari Internship Assignment by Jinendra Jain</h1>
-          <a href="https://github.com/jjinendr3/tayyari.git" target="_blank">
+          <a href="https://github.com/jjinendra3/tayyari.git" target="_blank">
             <FaGithub />
           </a>
         </div>
