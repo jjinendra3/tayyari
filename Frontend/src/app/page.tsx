@@ -29,6 +29,9 @@ const Home: React.FC = () => {
           >
             Wake up server
           </Button>
+          <div className="mt-2 text-wrap">
+            Request you to please wait for some time after clicking on the button as free tier server takes some time to wake up from spin-down.
+          </div>
         </div>
       </div>
     </Context.Provider>
